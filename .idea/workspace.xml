@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bf5df53-26e6-42e7-8744-e3c785b5ac45" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/keylogger_jar/keylogger.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/keylogger_jar/keylogger.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/msolivo/KeyLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/msolivo/KeyLogger.java" afterDir="false" />
-    </list>
+    <list default="true" id="4bf5df53-26e6-42e7-8744-e3c785b5ac45" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
